@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   AvatarComponent,
+  ButtonComponent,
   DividerComponent,
   InputTextComponent,
+  OverlayComponent,
 } from "./PrimeReactReusable";
 import SideBar from "./SideBar";
 
 const MainView = ({ content }) => {
+  const profileRef = useRef(null);
   const src =
     "https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg";
 
@@ -31,18 +34,42 @@ const MainView = ({ content }) => {
             size="large"
             shape="circle"
             className="cursor-pointer"
-            onClick={() => {
-              console.log("clicked");
-            }}
+            onClick={(e) => profileRef.current.toggle(e)}
           />
         </div>
+        <OverlayComponent
+          reference={profileRef}
+          content={renderProfileDropDown()}
+        />
       </div>
+    );
+  };
+
+  const renderProfileDropDown = () => {
+    return (
+      <>
+        <div className="my-2 px-2 py-2 cursor-pointer hover:surface-200 border-round-xl">
+          Account & Security
+        </div>
+        <div className="my-2 px-2 py-2 cursor-pointer hover:surface-200 border-round-xl">
+          Settings
+        </div>
+        <div className="my-2 px-2 py-2 cursor-pointer hover:surface-200 border-round-xl">
+          Help & Support
+        </div>
+        <ButtonComponent
+          label="Logout"
+          className="w-full p-2"
+          severity="danger"
+          icon="pi pi-sign-out"
+        />
+      </>
     );
   };
 
   return (
     <>
-      <div className="h-5rem bg-primary">{renderTopBar()}</div>
+      <div className="h-5rem">{renderTopBar()}</div>
       <div className="flex flex-column md:flex-row mt-3">
         <div className="block md:hidden w-12">Responsive Navigation</div>
         <div className="hidden md:block md:w-3 lg:w-2">{<SideBar />}</div>

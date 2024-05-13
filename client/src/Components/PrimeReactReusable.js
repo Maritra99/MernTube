@@ -1,6 +1,8 @@
 import { Divider } from "primereact/divider";
 import { InputText } from "primereact/inputtext";
 import { Avatar } from "primereact/avatar";
+import { OverlayPanel } from "primereact/overlaypanel";
+import { Button } from "primereact/button";
 
 export const DividerComponent = (props) => {
   return (
@@ -29,6 +31,24 @@ export const AvatarComponent = (props) => {
       image={props.src}
       size={props.size ? props.size : "xlarge"}
       shape={props.shape && props.shape}
+      {...props}
+    />
+  );
+};
+
+export const OverlayComponent = (props) => {
+  return <OverlayPanel ref={props.reference}>{props.content}</OverlayPanel>;
+};
+
+export const ButtonComponent = (props) => {
+  return (
+    <Button
+      label={props.label}
+      onClick={props.onClick}
+      icon={props.icon}
+      iconPos={props.iconPos ? props.iconPos : "right"}
+      loading={props.loading}
+      severity={props.severity && props.severity}
       {...props}
     />
   );

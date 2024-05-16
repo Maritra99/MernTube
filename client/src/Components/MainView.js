@@ -7,6 +7,7 @@ import {
   OverlayComponent,
 } from "./PrimeReactReusable";
 import SideBar from "./SideBar";
+import authUtils from "../Utils/AuthUtils";
 
 const MainView = ({ content }) => {
   const profileRef = useRef(null);
@@ -28,15 +29,29 @@ const MainView = ({ content }) => {
             className="w-full"
           />
         </div>
-        <div className="profile mx-1 px-3 md:px-5 w-2 sm:w-3 text-center">
-          <AvatarComponent
-            src={src}
-            size="large"
-            shape="circle"
-            className="cursor-pointer"
-            onClick={(e) => profileRef.current.toggle(e)}
-          />
-        </div>
+        {!authUtils.isLoggedIn() && (
+          <div className="login-section mx-1 px-3 md:px-5 w-2 sm:w-3 text-center">
+            <ButtonComponent
+              label="Login"
+              className="text-0 bg-purple-600 mx-1 px-3 py-2 border-round-lg"
+            />
+            <ButtonComponent
+              label="Sign Up"
+              className="text-purple-600 bg-purple-100 mx-1 px-3 py-2 border-round-lg"
+            />
+          </div>
+        )}
+        {authUtils.isLoggedIn() && (
+          <div className="profile mx-1 px-3 md:px-5 w-2 sm:w-3 text-center">
+            <AvatarComponent
+              src={src}
+              size="large"
+              shape="circle"
+              className="cursor-pointer"
+              onClick={(e) => profileRef.current.toggle(e)}
+            />
+          </div>
+        )}
         <OverlayComponent
           reference={profileRef}
           content={renderProfileDropDown()}

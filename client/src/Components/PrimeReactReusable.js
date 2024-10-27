@@ -4,6 +4,7 @@ import { Avatar } from "primereact/avatar";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
+import { Password } from "primereact/password";
 
 export const DividerComponent = (props) => {
   return (
@@ -21,6 +22,20 @@ export const InputTextComponent = (props) => {
       value={props.value}
       onChange={props.onChange}
       placeholder={props.placeholder}
+      {...props}
+    />
+  );
+};
+
+export const PasswordComponent = (props) => {
+  return (
+    <Password
+      value={props.value}
+      onChange={props.onChange}
+      feedback={props.feedback || false}
+      inputClassName={props.inputClassName}
+      icon={props.icon}
+      toggleMask={props.toggleMask}
       {...props}
     />
   );

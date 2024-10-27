@@ -4,36 +4,31 @@ import {
   CardComponent,
   InputTextComponent,
 } from "../Components/PrimeReactReusable";
-import { FacebookIcon, GoogleIcon, InstagramIcon } from "../Static/IconList";
 import TopBar from "../Components/TopBar";
+import { UserIcon } from "../Static/IconList";
 
 const renderCardBody = () => {
   return (
     <div className="flex flex-column p-4 w-12">
-      <p className="text-center font-bold text-5xl my-4 text-purple-600">
+      <div className="flex w-full justify-content-center">
+        <UserIcon className="text-purple-600" />
+      </div>
+      <p className="text-center font-bold text-5xl mt-1 mb-5 text-purple-600">
         Welcome Back
       </p>
-      <div className="flex w-full justify-content-center">
-        <FacebookIcon />
-        <GoogleIcon />
-        <InstagramIcon />
-      </div>
-      <div className="text-center text-color-secondary mt-3 mb-2">
-        Or Use Your Account
-      </div>
       <div className="flex flex-column justify-content-center align-items-center">
         <InputTextComponent
-          placeholder="Password"
-          className="w-full p-2 m-2 border-none surface-300 border-round-md"
+          placeholder="Username or Email Id"
+          className="w-11 p-3 mx-3 my-2 border-none surface-300 border-round-md"
         />
         <InputTextComponent
           placeholder="Password"
-          className="w-full p-2 m-2 border-none surface-300 border-round-md"
+          className="w-11 p-3 mx-3 my-2 border-none surface-300 border-round-md"
         />
       </div>
       <div className="flex justify-content-between align-items-center my-3 px-3">
         <div>
-          <div className="text-center text-color-secondary my-1">
+          <div className="text-center underline text-color-secondary my-1">
             Forgot your password?
           </div>
         </div>
@@ -64,6 +59,7 @@ const Login = () => {
           padding: 0,
           boxShadow:
             "rgba(111, 44, 145, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+          minHeight: "50%",
         }}
         unstyled
       />

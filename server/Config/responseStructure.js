@@ -1,7 +1,7 @@
 import CustomError from "../ErrorHandler/customErrorHandler.js";
 import httpStatusCode from "./httpStatusCode.js";
 
-const sendSuccessResponse = (res, data, message) => {
+const send200SuccessResponse = (res, data, message) => {
   return res.status(httpStatusCode.OK).json({
     status: true,
     data: data,
@@ -17,4 +17,4 @@ const throwUnauthorizedError = (errorMessage) => {
   throw new CustomError(errorMessage, httpStatusCode.UNAUTHORIZE);
 };
 
-export { sendSuccessResponse, throwBadRequestError, throwUnauthorizedError };
+export { send200SuccessResponse, throwBadRequestError, throwUnauthorizedError };

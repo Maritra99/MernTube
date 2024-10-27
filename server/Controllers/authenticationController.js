@@ -1,7 +1,7 @@
 import message from "../Config/message.js";
 import {
   throwBadRequestError,
-  sendSuccessResponse,
+  send200SuccessResponse,
 } from "../Config/responseStructure.js";
 import validator from "../Utils/validator.js";
 import authenticationhelper from "../Utils/authenticatorHelper.js";
@@ -47,7 +47,11 @@ authenticationController.loginUser = catchAsyncError(async (req, res) => {
 
   const token = authenticationhelper.generateToken(modifiedUserData);
 
-  sendSuccessResponse(res, token, message.SUCCESS_MESSAGE.LOGIN_SUCCESS);
+  return send200SuccessResponse(
+    res,
+    token,
+    message.SUCCESS_MESSAGE.LOGIN_SUCCESS
+  );
 });
 
 authenticationController.registerUser = catchAsyncError(async (req, res) => {
@@ -87,7 +91,7 @@ authenticationController.registerUser = catchAsyncError(async (req, res) => {
 
   const modifiedNewUser = lodashHelper.modifyRegistrationResponse(newUser);
 
-  sendSuccessResponse(
+  return send200SuccessResponse(
     res,
     modifiedNewUser,
     message.SUCCESS_MESSAGE.REGISTRATION_SUCCESS

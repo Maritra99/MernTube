@@ -3,6 +3,7 @@ import { InputText } from "primereact/inputtext";
 import { Avatar } from "primereact/avatar";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { Button } from "primereact/button";
+import { Card } from "primereact/card";
 
 export const DividerComponent = (props) => {
   return (
@@ -49,7 +50,24 @@ export const ButtonComponent = (props) => {
       iconPos={props.iconPos ? props.iconPos : "right"}
       loading={props.loading}
       severity={props.severity && props.severity}
+      text={props.text}
       {...props}
     />
+  );
+};
+
+export const CardComponent = (props) => {
+  return (
+    <Card
+      title={props.title}
+      subTitle={props.subTitle}
+      footer={props.footer}
+      header={props.header}
+      className={props.className}
+      style={props.style}
+      unstyled={props.unstyled}
+    >
+      {props.cardContent}
+    </Card>
   );
 };

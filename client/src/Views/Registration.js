@@ -32,7 +32,7 @@ const Registration = () => {
   const renderCardBody = () => {
     return (
       <div className="flex flex-column p-4 w-12">
-        <p className="text-center font-bold text-5xl my-2 text-purple-600">
+        <p className="text-center font-bold text-3xl md:text-4xl lg:text-5xl  my-2 text-purple-600">
           Register Yourself
         </p>
         <div>
@@ -88,7 +88,7 @@ const Registration = () => {
       </div>
       <CardComponent
         cardContent={renderCardBody()}
-        className="surface-card login-card w-12 sm:w-10 md:w-7 lg:w-4 mx-auto m-8 border-round-md"
+        className="surface-card login-card w-11 sm:w-10 md:w-7 lg:w-5 mx-auto m-8 border-round-md"
         style={{
           padding: 0,
           boxShadow:

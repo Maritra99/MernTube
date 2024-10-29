@@ -11,9 +11,9 @@ const renderCardBody = () => {
   return (
     <div className="flex flex-column p-4 w-12">
       <div className="flex w-full justify-content-center">
-        <UserIcon className="text-purple-600" />
+        <UserIcon className="text-purple-600 text-4xl sm:text-5xl md:text-6xl" />
       </div>
-      <p className="text-center font-bold text-5xl mt-1 mb-5 text-purple-600">
+      <p className="text-center font-bold text-3xl sm:text-4xl md:text-5xl mt-1 mb-5 text-purple-600">
         Welcome Back
       </p>
       <div className="flex flex-column justify-content-center align-items-center">
@@ -54,7 +54,7 @@ const Login = () => {
       </div>
       <CardComponent
         cardContent={renderCardBody()}
-        className="surface-card login-card w-12 sm:w-10 md:w-7 lg:w-4 mx-auto m-8 border-round-md"
+        className="surface-card login-card w-11 sm:w-10 md:w-7 lg:w-5 mx-auto m-8 border-round-md"
         style={{
           padding: 0,
           boxShadow:

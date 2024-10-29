@@ -21,7 +21,7 @@ const SideBar = () => {
         {menus.map((menu) => (
           <div
             key={menu.urlPath}
-            className="my-2 py-2 pl-2 cursor-pointer border-round-left border-round-3xl border-1 border-solid border-transparent hover:border-purple-200 hover:bg-purple-200"
+            className="my-2 py-2 pl-2 cursor-pointer border-round-left border-round-xl border-1 border-solid border-transparent hover:border-purple-200 hover:bg-purple-200"
             onClick={() => navigate(menu.urlPath)}
           >
             <i className={`px-4 pi ${menu.iconClassName}`}></i>

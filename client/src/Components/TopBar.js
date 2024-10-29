@@ -7,6 +7,7 @@ import {
   OverlayComponent,
 } from "./PrimeReactReusable";
 import { useNavigate, useLocation } from "react-router-dom";
+import { YoutubeIcon } from "../Static/IconList";
 
 const restrictedPathForSearchBoxRender = ["/login", "/sign-up"];
 
@@ -41,11 +42,17 @@ const TopBar = () => {
 
   return (
     <div className="flex justify-content-between align-items-center h-full min-w-screen">
-      <div className="logo flex mx-1 px-3 md:px-5 text-2xl md:text-3xl w-2 sm:w-3 text-center">
+      <div className="logo w-2 md:w-3 text-center">
         {/* <span>
               <AvatarComponent src={src} size="large" />
             </span> */}
-        <span className="hidden sm:block text-center w-full">Merntube</span>
+        <div
+          className="flex text-center cursor-pointer flex-row justify-content-center align-items-center"
+          onClick={() => navigate("/")}
+        >
+          <YoutubeIcon className="text-5xl m-1 text-purple-600" />
+          <span className="hidden md:block text-2xl">Merntube</span>
+        </div>
       </div>
       {!restrictedPathForSearchBoxRender.includes(location.pathname) && (
         <div className="search mx-1 px-1 md:px-4 lg:px-8 w-6">
@@ -56,20 +63,22 @@ const TopBar = () => {
         </div>
       )}
       {!authUtils.isLoggedIn() && (
-        <div className="login-section mx-1 px-3 md:px-5 w-2 sm:w-3 text-center">
+        <div className="login-section w-4 md:w-3 text-center">
           {location.pathname !== "/login" && (
             <ButtonComponent
               label="Login"
-              className="text-0 bg-purple-600 mx-1 px-3 py-2 border-round-lg"
+              className="text-0 text-xs lg:text-base bg-purple-600 mx-0 sm:mx-1 px-2 py-2 border-round-lg"
               onClick={() => navigate("/login")}
+              icon="pi pi-sign-in"
             />
           )}
           {location.pathname !== "/sign-up" && (
             <ButtonComponent
               label="Sign Up"
-              className="text-purple-600 mx-1 px-3 py-2 border-round-lg"
+              className="text-xs lg:text-base text-purple-600 mx-0 sm:mx-1 px-2 py-2 border-round-lg"
               text={true}
               onClick={() => navigate("/sign-up")}
+              icon="pi pi-user-plus"
             />
           )}
         </div>

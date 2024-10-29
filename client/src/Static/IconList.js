@@ -1,5 +1,5 @@
 import { FaFacebook, FaGoogle, FaInstagram } from "react-icons/fa6";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaRegUserCircle, FaYoutube } from "react-icons/fa";
 
 const style = { fontSize: "1.6rem", margin: "2%" };
 
@@ -40,4 +40,13 @@ export const UserIcon = (props) => {
     fontSize: "3rem",
   };
   return <FaRegUserCircle style={styles} className={props.className} />;
+};
+
+export const YoutubeIcon = (props) => {
+  const styles = {
+    ...style,
+    ...props.style,
+    fontSize: "3rem",
+  };
+  return <FaYoutube style={styles} className={props.className} />;
 };

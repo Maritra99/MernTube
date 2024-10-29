@@ -5,13 +5,14 @@ import { OverlayPanel } from "primereact/overlaypanel";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { Password } from "primereact/password";
+import { useEffect, useState } from "react";
 
 export const DividerComponent = (props) => {
   return (
     <Divider
       type={props.type ? props.type : "solid"}
       layout={props.layout ? props.layout : "horizontal"}
-      {...props}
+      className={props.className}
     />
   );
 };
@@ -22,7 +23,7 @@ export const InputTextComponent = (props) => {
       value={props.value}
       onChange={props.onChange}
       placeholder={props.placeholder}
-      {...props}
+      className={props.className}
     />
   );
 };
@@ -36,7 +37,7 @@ export const PasswordComponent = (props) => {
       inputClassName={props.inputClassName}
       icon={props.icon}
       toggleMask={props.toggleMask}
-      {...props}
+      className={props.className}
     />
   );
 };
@@ -47,26 +48,43 @@ export const AvatarComponent = (props) => {
       image={props.src}
       size={props.size ? props.size : "xlarge"}
       shape={props.shape && props.shape}
-      {...props}
+      className={props.className}
     />
   );
 };
 
 export const OverlayComponent = (props) => {
-  return <OverlayPanel ref={props.reference}>{props.content}</OverlayPanel>;
+  return (
+    <OverlayPanel ref={props.reference} className={props.className}>
+      {props.content}
+    </OverlayPanel>
+  );
 };
 
 export const ButtonComponent = (props) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 576);
+
+  const handleResize = () => {
+    setIsSmallScreen(window.innerWidth < 576);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Button
-      label={props.label}
+      label={!isSmallScreen && props.label}
       onClick={props.onClick}
       icon={props.icon}
       iconPos={props.iconPos ? props.iconPos : "right"}
       loading={props.loading}
       severity={props.severity && props.severity}
       text={props.text}
-      {...props}
+      className={props.className}
     />
   );
 };

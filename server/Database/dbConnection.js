@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import model from "./schema.js";
+import mongoose from "./instance.js";
+import model from "./model.js";
 
 const connectDB = async () => {
   const MONGO_URI = process.env.MONGO_URI;

@@ -7,6 +7,7 @@ import validator from "../Utils/validator.js";
 import authenticationhelper from "../Utils/authenticatorHelper.js";
 import catchAsyncError from "../ErrorHandler/catchAsyncError.js";
 import lodashHelper from "../Utils/lodashHelper.js";
+import authModel from "../Model/authentication.js";
 
 const authenticationController = {};
 
@@ -26,7 +27,7 @@ authenticationController.loginUser = catchAsyncError(async (req, res) => {
     );
   }
 
-  const userData = await authenticationhelper.findUserDataByUserName(username);
+  const userData = await authModel.findUserDataByUserName(username);
 
   if (!userData) {
     throwBadRequestError(
@@ -70,7 +71,7 @@ authenticationController.registerUser = catchAsyncError(async (req, res) => {
     );
   }
 
-  const userData = await authenticationhelper.findUserDataByUserName(username);
+  const userData = await authModel.findUserDataByUserName(username);
 
   if (userData) {
     throwBadRequestError(
@@ -85,9 +86,7 @@ authenticationController.registerUser = catchAsyncError(async (req, res) => {
     password: hashedPassword,
   };
 
-  const newUser = await authenticationhelper.saveNewRegistrationToDb(
-    dataToSaveInDB
-  );
+  const newUser = await authModel.saveNewRegistrationToDb(dataToSaveInDB);
 
   const modifiedNewUser = lodashHelper.modifyRegistrationResponse(newUser);
 

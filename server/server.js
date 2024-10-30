@@ -8,7 +8,7 @@ import errorMiddleWare from "./ErrorHandler/globalErrorMiddleWare.js";
 
 const app = express();
 
-dotenv.config({ path: "./env/.env" });
+dotenv.config();
 const PORT = process.env.PORT;
 
 connectDB();

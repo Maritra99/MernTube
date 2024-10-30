@@ -1,8 +1,9 @@
-import mongoose from "mongoose";
-
+import mongoose from "./instance.js";
 const schema = {};
 
-schema.user = mongoose.Schema(
+const Schema = mongoose.Schema;
+
+schema.user = Schema(
   {
     username: {
       type: String,
@@ -15,17 +16,4 @@ schema.user = mongoose.Schema(
   { timestamps: true, collection: "users" }
 );
 
-const model = {};
-
-model.createModel = () => {
-  for (let collectionName in schema) {
-    if (schema.hasOwnProperty(collectionName)) {
-      model[`${collectionName}Model`] = mongoose.model(
-        collectionName,
-        schema[collectionName]
-      );
-    }
-  }
-};
-
-export default model;
+export default schema;
